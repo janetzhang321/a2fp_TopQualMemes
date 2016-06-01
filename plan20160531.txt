@@ -1,0 +1,57 @@
+plan 05.31.16
+
+05.31.16
+EVERYBODY- watch dances
+
+https://www.youtube.com/watch?v=kPRA0W1kECg
+
+selection sort - https://www.youtube.com/watch?v=Ns4TPTC8whw 
+quick sort - https://www.youtube.com/watch?v=ywWBy6J5gz8
+bubble sort - https://www.youtube.com/watch?v=lyZQPjUT5B4
+merge sort - https://www.youtube.com/watch?v=XaqR3G_NVoo
+insertion sort - https://www.youtube.com/watch?v=ROalU379l3U
+heap sort - https://www.youtube.com/watch?v=ZbUbCe0WpBE
+bogo sort - https://www.youtube.com/watch?v=dKDK6wELx7Q
+
+SORTS: 
+1. Bubble
+2. Selection
+3. Insertion
+4. Merge
+5. Quick
+6. Heap (?)
+7. BOGO!
+
+METHODS: 
+I. Sorty things
+- add/remove ints
+- all the sorts (e.g. sort method)
+II. Visualize-y things
+- boxes for container
+- swap
+- different color for sorted/unsorted regions (sort-specific)
+- buttons for sorts
+
+WORKFLOW: 
+Back-end: 
+- Get all the sorts to work. 
+- To substitute button-press for sorts, take String inputs. 
+- To substitute box-moving for sorts, produce String outputs.
+Front-end: 
+- Do all the processing stuff
+
+
+Which jobs are most crucial?
+Ultimately the processing is going to be what's most crucial, as we've already coded most of the sorts we intend to visualize. Within our processing needs, the most crucial jobs will be visualizing the data container, getting items in said container (likely boxes with numbers inside) to move the way we want them to, and getting button presses to work.
+
+Which components constitute core functionality vs extras?
+Core functionality is the ability to visualize the main sorts -- selection, insertion, merge, and quick. Each of the crucial jobs listed above within the visibility section also constitutes core functionality. Extras are the other sorts, and, if we have time (which entirely depends on our learning curve for processing), implementing other types of data structures (namely linked lists). 
+
+Which components are prerequisites for others?
+The sorts are a must! We have to code the sorts before we can do anything else. Then comes the actual construction of the data container in processing, and then the button functionality.
+
+Which tasks can be delegated, and which must be collaboratively tackled?
+Coding the sorts can probably delegated to a single team member, as this just involves collecting work we have done throughout the term. Processing definitely needs to be collaboratively tackled, as I believe at this stage none of us has more than a shaky understanding of how things work. We need to build on that before we can continue and the best way to do that is together!! Once we understand processing (maybe we can do the initial design--of the arrays themselves--together), we can start to split up tasks.
+
+What is the timeline, and how does it accommodate setbacks, course changes?
+
