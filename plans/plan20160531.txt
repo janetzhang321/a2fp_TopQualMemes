@@ -55,3 +55,12 @@ Coding the sorts can probably delegated to a single team member, as this just in
 
 What is the timeline, and how does it accommodate setbacks, course changes?
 
+June 1     --    Begin collecting sorts
+
+June 2-3   --    Write non-processing methods that take in user input and either sort an data set, create a data set or remember a certain state of the data set.
+
+June 4     --    SAT Tests and Break Day/ Day to finish up any of the loose ends from the previous section (since that section is pretty critical, though fairly simplistic)
+
+June 6-10  --	 Implement the processing overlay to the sort visualizations
+
+June 11-13 --    Bug Testing and Loose Ends Tying
