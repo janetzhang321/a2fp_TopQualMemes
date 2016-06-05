@@ -1,0 +1,17 @@
+- Input stream
+- Linked list for manual step through sort
+- Full viz is auto step thru
+
+PRIORITIZATION OF SORTS
+I. 
+* bubble
+* selection
+* insertion
+II.
+* merge
+* Q
+III (extra).
+* heap
+* bogo
+
+WE NEED TO WRITE THE SORTS IN PROCESSING!
