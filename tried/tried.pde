@@ -17,7 +17,7 @@
     //add element (we will change this to user input later)
     addE(5);
     //fill(255);
-    addE(6);
+    //addE(6);
   }
   
   
