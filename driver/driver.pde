@@ -1,23 +1,20 @@
-//class try{
+
 
   ArrayList<element> array=new ArrayList<element>();
   
   void setup(){
    //set bkgrnd size
-   //size (500,500);
    fullScreen();
    //and color
    background (225);
-   noStroke();
-   fill (102);
   }
 
   void draw () {
     addE(5);
     addE(6);
+    addE(40000);
+    addE(65644489);
     noLoop();
-    //fill(255);
-    //addE(6);
     
   }
   
@@ -27,8 +24,6 @@
     float[] newCoor = array.get(array.size()-1).getCoors();
     newCoor[0] += size*2;
     newCoor[1] += size*0;
-    //float[] a = {50,50,25,25}
-    //return a;
     return newCoor;
   }
   
@@ -44,5 +39,3 @@
     }
   }
   
-  
-//}
