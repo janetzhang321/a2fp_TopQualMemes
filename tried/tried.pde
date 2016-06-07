@@ -1,6 +1,6 @@
 //class try{
 
-  ArrayList array=new ArrayList<element>();
+  ArrayList<element> array=new ArrayList<element>();
   
   void setup(){
    //set bkgrnd size
@@ -25,7 +25,7 @@
   float[] findCoor(float size){
     //default
     
-    float[] newCoor = ((element)array.get(array.size()-1)).getCoors();
+    float[] newCoor = array.get(array.size()-1).getCoors();
     newCoor[0] += size;
     newCoor[1] += size;
     //float[] a = {50,50,25,25}
