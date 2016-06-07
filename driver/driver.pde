@@ -4,7 +4,8 @@
   
   void setup(){
    //set bkgrnd size
-   size (500,500);
+   //size (500,500);
+   fullScreen();
    //and color
    background (225);
    noStroke();
@@ -12,30 +13,35 @@
   }
 
   void draw () {
-    //make it white
-    fill(255);
-    //add element (we will change this to user input later)
-    stroke(204,102,0);
     addE(5);
+    addE(6);
+    noLoop();
     //fill(255);
     //addE(6);
+    
   }
   
   //find where to put the next box, like in an array
   float[] findCoor(float size){
     //default
-    
     float[] newCoor = array.get(array.size()-1).getCoors();
-    newCoor[0] += size;
-    newCoor[1] += size;
+    newCoor[0] += size*2;
+    newCoor[1] += size*0;
     //float[] a = {50,50,25,25}
     //return a;
     return newCoor;
   }
   
   void addE(int i){
-    element e=new element(new Integer(i).toString(), findCoor(25)); 
-    array.add(e);
+    if (array.size()==0){
+        float[] b={50,50,25,25};
+        element e=new element(new Integer(i).toString(), b); 
+        array.add(e);
+    }
+    else{
+      element e=new element(new Integer(i).toString(), findCoor(25)); 
+      array.add(e);
+    }
   }
   
   

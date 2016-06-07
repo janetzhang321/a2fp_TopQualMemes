@@ -5,19 +5,20 @@ class element {
   //constructor
   element(String words, float[] inputCoors){
     //finding space
-    x1=inputCoors[0];
-    y1=inputCoors[1];
-    w=inputCoors[2];
-    h=inputCoors[3];
+    for (int x=0;x<coors.length;x++){
+      coors[x]=inputCoors[x];
+    }
+    
     //creating a rect
     rectMode(RADIUS);
-    rect(x1,y1,w,h); 
-    //fill to see the words
-    fill(25);
+    //fil bakgrnd
+    fill(255);    
+    //draw border
+    stroke(204,102,0);
+    //create rectangle
+    rect(coors[0],coors[1],coors[2],coors[3]); 
     //fill w. words
     fillText(words);
-    //center words
-    textAlign(CENTER,CENTER);
   }
   
   //idk
@@ -27,14 +28,18 @@ class element {
   
   //accessors
   float[] getCoors(){
-    float[] a = {x1,y1,w,h};
+    float[] a = {coors[0],coors[1],coors[2],coors[3]};
     return a;
   }
   
   //text
   void fillText(String words){
+    //center words
+    textAlign(CENTER,CENTER);
     rectMode(RADIUS);
-    text(words,x1,y1,w,h);
+    //fill to see the words
+    fill(25);
+    text(words,coors[0],coors[1],coors[2],coors[3]);
   }
 
 
