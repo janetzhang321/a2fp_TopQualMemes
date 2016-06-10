@@ -1,6 +1,7 @@
 class element {
   
   float[] coors = new float[4];
+  boolean interested, sorted, selected;
   
   //constructor
   element(String words, float[] inputCoors){
@@ -8,6 +9,10 @@ class element {
     for (int x=0;x<coors.length;x++){
       coors[x]=inputCoors[x];
     }
+    
+    interested = false;
+    sorted = false;
+    selected = false;
     
     //creating a rect
     rectMode(RADIUS);
@@ -32,6 +37,11 @@ class element {
     return a;
   }
   
+  void setCoors(float[] newCoors) {
+    coors = newCoors;
+    redraw(); //Might have to comment out if redraw is written outside
+  }
+  
   //text
   void fillText(String words){
     //center words
@@ -41,6 +51,11 @@ class element {
     fill(25);
     text(words,coors[0],coors[1],coors[2],coors[3]);
   }
-
-
+  
+  void swap(element swapper) {
+    float[] swapperCoors = swapper.getCoors();
+    swapper.setCoors(this.getCoors());
+    this.setCoors(swapperCoors);
+  }
+    
 }
