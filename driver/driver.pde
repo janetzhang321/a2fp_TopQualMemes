@@ -1,12 +1,15 @@
 
 
   ArrayList<element> array=new ArrayList<element>();
+  boolean runMethod;
   
   void setup(){
    //set bkgrnd size
    fullScreen();
    //and color
    background (225);
+   //choose menu
+   run();
   }
 
   void draw () {
@@ -29,7 +32,7 @@
   
   void addE(int i){
     if (array.size()==0){
-        float[] b={50,50,25,25};
+        float[] b={50,250,25,25};
         element e=new element(new Integer(i).toString(), b); 
         array.add(e);
     }
@@ -37,5 +40,10 @@
       element e=new element(new Integer(i).toString(), findCoor(25)); 
       array.add(e);
     }
+  }
+  
+  void run(){
+    input();
+    play();
   }
   
