@@ -17,6 +17,8 @@ ControlP5 cp5;
 
 String textValue = "";
 
+
+
 void setup() {
   size(700,400);
   
@@ -25,29 +27,17 @@ void setup() {
   cp5 = new ControlP5(this);
   
   cp5.addTextfield("input")
-     .setPosition(20,100)
-     .setSize(200,40)
+     .setPosition(20,20)
+     .setSize(100,20)
      .setFont(font)
      .setFocus(true)
      .setColor(color(255,0,0))
      ;
-                 
-  cp5.addTextfield("textValue")
-     .setPosition(20,170)
-     .setSize(200,40)
-     .setFont(createFont("arial",20))
-     .setAutoClear(false)
-     ;
        
   cp5.addBang("clear")
-     .setPosition(240,170)
-     .setSize(80,40)
+     .setPosition(140,20)
+     .setSize(40,20)
      .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-     ;    
-  
-  cp5.addTextfield("default")
-     .setPosition(20,350)
-     .setAutoClear(false)
      ;
      
   textFont(font);
@@ -56,8 +46,8 @@ void setup() {
 void draw() {
   background(0);
   fill(255);
-  text(cp5.get(Textfield.class,"input").getText(), 360,130);
-  text(textValue, 360,180);
+  text(cp5.get(Textfield.class,"input").getText(), 200,37);
+  //text(textValue, 300,180);
 }
 
 public void clear() {
@@ -77,6 +67,14 @@ void controlEvent(ControlEvent theEvent) {
 public void input(String theText) {
   // automatically receives results from controller input
   println("a textfield event for controller 'input' : "+theText);
+  /* okay y'all so what you do with this is you take theText, which is the final
+     version of the inputted text, and you try/catch it to do things with it, e.g.: */
+  try {
+    println("doing math to the input : " + (Integer.parseInt(theText) * 2 + 3));
+  } catch (Exception e) {
+    println("input was not numerical");
+  }
+  /* we can send theText to a different class as an int to be manipulated */
 }
 
 
