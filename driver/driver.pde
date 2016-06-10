@@ -3,6 +3,9 @@
   ArrayList<element> array=new ArrayList<element>();
   boolean runMethod;
   
+  
+  
+  
   void setup(){
    //set bkgrnd size
    fullScreen();
@@ -45,5 +48,17 @@
   void run(){
     input();
     play();
+  }
+  
+  void input(){
+  //takes input from text field and turns it into element
+  //adds the element at enter
+  //stops running when play button is pressed
+  }
+  
+  void play(){
+    //starts when play button is pressed
+    //if manual is selected, then sets inst var of sort to manual
+    //runs the sort
   }
   
