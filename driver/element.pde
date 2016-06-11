@@ -57,5 +57,5 @@ class element {
     swapper.setCoors(this.getCoors());
     this.setCoors(swapperCoors);
   }
-    
+
 }
