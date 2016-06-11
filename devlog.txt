@@ -1,3 +1,24 @@
-05.31.16 -- developed preliminary plan in class; finished at home
-06.02.16 -- developed flo-charts in class
-06.03.16 -- worked brainstorming in class
+05.31.16
+IN CLASS: developed preliminary plan to be toughened up at home
+
+06.02.16
+IN CLASS: developed flow charts
+
+06.03.16
+IN CLASS: brainstormed
+
+06.05.16
+IN CLASS: further planifications
+AT HOME (NALA): restructured directories for ease of processing testing
+
+06.06.16
+IN CLASS: 
+
+06.07.16
+IN CLASS: decision to incorporate textfield from online (assigned to NALA)
+
+06.10.16
+IN CLASS (NALA): look through textfield code, understand how to glean information from input and transfer it
+IN CLASS (RICHARD and JANET): designed superclass structure with animate so that each Sort class will inherit certain methods
+IN CLASS: planned for weekend work, discussed each other's schedules
+AT HOME (NALA): tried to implement textfield properly, but unsuccessful
