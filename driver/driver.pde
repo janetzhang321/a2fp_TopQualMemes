@@ -1,4 +1,21 @@
+/**
+* ControlP5 Textfield
+*
+*
+* find a list of public methods available for the Textfield Controller
+* at the bottom of this sketch.
+*
+* by Andreas Schlegel, 2012
+* www.sojamo.de/libraries/controlp5
+*
+*/
 
+
+import controlP5.*;
+
+ControlP5 cp5;
+
+String textValue = "";
 
   ArrayList<element> array=new ArrayList<element>();
   boolean runMethod;
@@ -11,15 +28,33 @@
    fullScreen();
    //and color
    background (225);
-   //choose menu
+   //choose menuPFont font = createFont("arial",20);
+    PFont font = createFont("arial",20);
+
+  cp5 = new ControlP5(this);
+  
+  cp5.addTextfield("input")
+     .setPosition(20,20)
+     .setSize(100,20)
+     .setFont(font)
+     .setFocus(true)
+     .setColor(color(255,0,0))
+     ;
+       
+  cp5.addBang("clear")
+     .setPosition(140,20)
+     .setSize(40,20)
+     .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+     ;
+     
+  textFont(font);
    run();
   }
 
   void draw () {
-    addE(5);
-    addE(6);
-    addE(40000);
-    addE(65644489);
+  fill(255);
+  text(cp5.get(Textfield.class,"input").getText(), 200,37);
+    
     noLoop();
     
   }
@@ -46,16 +81,33 @@
   }
   
   void run(){
-    input();
+    input(textValue);
     play();
   }
   
-  void input(){
-  //takes input from text field and turns it into element
-  //adds the element at enter
-  //stops running when play button is pressed
+
+public void clear() {
+  cp5.get(Textfield.class,"textValue").clear();
+}
+
+
+void controlEvent(ControlEvent theEvent) {
+  if(theEvent.isAssignableFrom(Textfield.class)) {
+    println("controlEvent: accessing a string from controller '"
+            +theEvent.getName()+"': "
+            +theEvent.getStringValue()
+            );
   }
-  
+}
+
+public void input(String theText) {
+  try {
+    addE(Integer.parseInt(theText));
+  } catch (Exception e) {
+    println("input was not numerical");
+  }
+}
+
   void play(){
     //starts when play button is pressed
     //if manual is selected, then sets inst var of sort to manual
