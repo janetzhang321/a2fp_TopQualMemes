@@ -17,7 +17,7 @@ private String textValue = "";
 private ArrayList<element> array=new ArrayList<element>();
 private boolean runMethod;//true for manual turned on
 private boolean start;//starts play method
-private button current=null;
+private String current=null;
 
 void setup(){
    //set bkgrnd size
@@ -66,10 +66,13 @@ void setup(){
     //create buttons 
     manualButton();
     playButton();
-    bubbleSort();
-    selectionSort();
-    insertionSort();
+    bubbleSortButton();
+    selectionSortButton();
+    insertionSortButton();
+    notOnButton();
+    sorty();
     drawArray();
+    println(current);
     /*
     while (array.size()==2){
       swap(0,1);
@@ -95,90 +98,106 @@ void setup(){
      element two = array.get(i2);
      float[] oneCoors = one.getCoors();
      float[] twoCoors = two.getCoors();
-     array.get(i1).setCoors(twoCoors);
+     array.get(i1).setCoors(twoCoors);   
      array.get(i2).setCoors(oneCoors);
      array.set(i1, two);
      array.set(i2, one);
    }
-    
-  public void bubbleSort(){
+  
+  public void notOnButton() {
+    if (!bubbleSortButton() && 
+        !selectionSortButton() && 
+        !insertionSortButton() &&
+        !manualButton() &&
+        !playButton())
+        {
+          current = null;
+        }
+  }
+  
+  public boolean bubbleSortButton(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {width-60,30,25,10};
     //This creates the button
     button bubble = new button("Bubble",buttonCoor);
     //This checks for hover
     //If the mouse is over the button, then it sets the current button to the button the mouse is over
-    if (bubble.hover() != null) {
-      current = bubble.hover();
+    if (bubble.hover()) {
+      current = "bubble";
+      return true;
     }
     //Otherwise, the mouse is over no button
     else {
-      current = null;
+      return false;
     }
   }
   
-  public void selectionSort(){
+  public boolean selectionSortButton(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {width-140,30,25,10};
     //This creates the button
     button selection = new button("Selection",buttonCoor);
     //This checks for hover
     //If the mouse is over the button, then it sets the current button to the button the mouse is over
-    if (selection.hover() != null) {
-      current = selection.hover();
+    if (selection.hover()) {
+      current = "selection";
+      return true;
     }
     //Otherwise, the mouse is over no button
     else {
-      current = null;
+      return false;
     }
   }
   
-  public void insertionSort(){
+  public boolean insertionSortButton(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {width-220,30,25,10};
     //This creates the button
     button insertion = new button("Insertion",buttonCoor);
     //This checks for hover
     //If the mouse is over the button, then it sets the current button to the button the mouse is over
-    if (insertion.hover() != null) {
-      current = insertion.hover();
+    if (insertion.hover()) {
+      current = "insertion";
+      return true;
     }
     //Otherwise, the mouse is over no button
     else {
-      current = null;
+      return false;
     }
   }
-  
-  public void manualButton(){
+    
+  public boolean manualButton(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {225,30,20,10};
     //This creates the button
     button manual = new button("Manual",buttonCoor);
     //This checks for hover
     //If the mouse is over the button, then it sets the current button to the button the mouse is over
-    if (manual.hover() != null) {
-      current = manual.hover();
+    if (manual.hover()) {
+      current = "manual";
+      return true;
     }
     //Otherwise, the mouse is over no button
     else {
-      current = null;
+      return false;
     }
   }
   
-  public void playButton(){
+  public boolean playButton(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {300,30,20,10};
     //This creates the button
     button play = new button("Play",buttonCoor);
     //This checks for hover
     //If the mouse is over the button, then it sets the current button to the button the mouse is over
-    if (play.hover() != null) {
-      current = play.hover();
+    if (play.hover()) {
+      current = "play";
+      return true;
     }
     //Otherwise, the mouse is over no button
     else {
-      current = null;
-    }
+      return false;
+    } 
   }
   
   
@@ -231,11 +250,11 @@ void setup(){
     }
     
     if (n == 0) {
-       element e=new element(new Integer(i).toString(), b); 
+       element e=new element(temp.get(0), start); 
        array.add(e);
        
        for (int i = 1; i < temp.size(); i++) {
-        element e = new element(temp.get(i), findCoor(25));
+        e = new element(temp.get(i), findCoor(25));
         array.add(e);  
        }
     }
@@ -246,7 +265,7 @@ void setup(){
       }
     }
     
-    if (n > 0) {
+    if (array.size() != 0) {
     //This deletes the remnant box that Processing drew
     float[] nextBox = findCoor(25);
     
@@ -289,11 +308,49 @@ void setup(){
     }
   }
   
-  public void mousePressed() {
-    if (current != null) {
-      println(current.getName());
+  public void sorty() {
+    if (mousePressed) {
+      if (current=="bubble"){
+          bubbleSort();
+          println("test");
+      }
+      else if (current=="selection"){
+          return;
+      }
+      else if (current=="insertion"){
+          return;
+      } 
     }
   }
+  
+  public void bubbleSort(){
+    //just random test code
+    //noLoop();
+    //background(0);   // Clear the screen with a black background
+    //redraw();
+    ArrayList data = new ArrayList();
+    boolean fullPass = false;
+    for (int i=0; i < array.size();i++){
+      data.add(array.get(i));
+    }
+    while (! fullPass) {
+        fullPass = true;
+        for(int i = array.size() - 1; i > 0; i--) {
+          if (Integer.parseInt(array.get(i).getName())<Integer.parseInt(array.get(i-1).getName())) {
+              swap(i,i-1);
+              fullPass = false;
+          }
+          //drawArray();
+          //redraw();
+        }        
+    }
+    //loop();
+  }
+  /*
+  public mousePressed(){
+    
+  }
+*/
 
 /*
   public void play(){

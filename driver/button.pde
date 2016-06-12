@@ -24,7 +24,7 @@ public class button{
   void draw(){
     
   }
-  
+
   public String getName() {
     return name;
   }
@@ -39,7 +39,7 @@ public class button{
     text(words,coors[0],coors[1],coors[2],coors[3]);
   }
   
-  public button hover() {
+  public boolean hover() {
     float x,y,w,h;
     
     x = coors[0];
@@ -52,49 +52,14 @@ public class button{
     if (mouseX>= x-w && mouseX <= x+w &&
         mouseY>= y-h && mouseY <= y+h) {
           fill(31,34,0);
-            
-            if (mousePressed){
-              mousePressed();
-            }
           
-          return this;
+          return true;
         }
     else {
       fill(31,34,255);
-      return null;
+      return false;
     }
   }
-  
-  public void mousePressed(){
-    if (name=="Bubble"){
-        bubbleSort();
-    }
-    if (name=="Selection"){
-      selectionSort();
-    }
-    if (name=="Insertion"){
-      insertionSort();
-    }
-  }
-  
-  void bubbleSort(){
-    //just random test code
-    background(0);   // Clear the screen with a black background
-    ArrayList data = new ArrayList();
-    boolean fullPass = false;
-    for (int i=0; i < array.size();i++){
-      data.add(array.get(i));
-    }
-    while (! fullPass) {
-        fullPass = true;
-        for(int i = array.size() - 1; i > 0; i--) {
-          if (Integer.parseInt(array.get(i).getName())<Integer.parseInt(array.get(i-1).getName())) {
-              swap(i,i-1);
-              fullPass = false;
-          }
-        }
-      }
-    }
   
   void selectionSort(){
     background(255, 204, 0);
