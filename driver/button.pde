@@ -31,7 +31,7 @@ public class button{
   
   public void fillText(String words){
     //center words
-    textFont(createFont("arial", 15));
+    textFont(createFont("arial", 10));
     textAlign(CENTER,CENTER);
     rectMode(RADIUS);
     //fill to see the words

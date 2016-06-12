@@ -17,7 +17,7 @@ private String textValue = "";
 private ArrayList<element> array=new ArrayList<element>();
 private boolean runMethod;//true for manual turned on
 private boolean start;//starts play method
-private button current;
+private button current=null;
 
 void setup(){
    //set bkgrnd size
@@ -49,11 +49,66 @@ void setup(){
     }
 
   void draw () {
-    //create buttons
+    //create buttons 
+    manualButton();
+    bubbleSort();
+    selectionSort();
+    insertionSort();
+  }
+  
+  void bubbleSort(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
-    float[] buttonCoor = {width-60,40,35,20};
+    float[] buttonCoor = {width-60,30,25,10};
     //This creates the button
-    button manual = new button("Bubble",buttonCoor);
+    button bubble = new button("Bubble",buttonCoor);
+    //This checks for hover
+    //If the mouse is over the button, then it sets the current button to the button the mouse is over
+    if (bubble.hover() != null) {
+      current = bubble.hover();
+    }
+    //Otherwise, the mouse is over no button
+    else {
+      current = null;
+    }
+  }
+  
+  void selectionSort(){
+    //This writes the coordinates of the button (x coor, y coor, width, height)
+    float[] buttonCoor = {width-140,30,25,10};
+    //This creates the button
+    button selection = new button("Selection",buttonCoor);
+    //This checks for hover
+    //If the mouse is over the button, then it sets the current button to the button the mouse is over
+    if (selection.hover() != null) {
+      current = selection.hover();
+    }
+    //Otherwise, the mouse is over no button
+    else {
+      current = null;
+    }
+  }
+  
+  void insertionSort(){
+    //This writes the coordinates of the button (x coor, y coor, width, height)
+    float[] buttonCoor = {width-220,30,25,10};
+    //This creates the button
+    button insertion = new button("Insertion",buttonCoor);
+    //This checks for hover
+    //If the mouse is over the button, then it sets the current button to the button the mouse is over
+    if (insertion.hover() != null) {
+      current = insertion.hover();
+    }
+    //Otherwise, the mouse is over no button
+    else {
+      current = null;
+    }
+  }
+  
+  void manualButton(){
+    //This writes the coordinates of the button (x coor, y coor, width, height)
+    float[] buttonCoor = {225,30,20,10};
+    //This creates the button
+    button manual = new button("Manual",buttonCoor);
     //This checks for hover
     //If the mouse is over the button, then it sets the current button to the button the mouse is over
     if (manual.hover() != null) {
@@ -65,8 +120,9 @@ void setup(){
     }
   }
   
+  
   //find where to put the next box, like in an array
-public float[] findCoor(float size){
+  public float[] findCoor(float size){
     //default
     float[] newCoor = array.get(array.size()-1).getCoors();
     newCoor[0] += size*2;
@@ -74,7 +130,7 @@ public float[] findCoor(float size){
     return newCoor;
   }
   
-public void addE(int i){
+  public void addE(int i){
     if (array.size()==0){
         float[] b={50,250,25,25};
         element e=new element(new Integer(i).toString(), b); 
