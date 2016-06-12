@@ -82,7 +82,7 @@ void setup(){
      array.get(i1).setCoors(twoCoors);
      array.get(i2).setCoors(oneCoors);
      array.set(i1, two);
-     array.set(i2, one); 
+     array.set(i2, one);
    }
     
   public void bubbleSort(){

@@ -80,7 +80,21 @@ public class button{
   void bubbleSort(){
     //just random test code
     background(0);   // Clear the screen with a black background
-  }
+    ArrayList<Comparable> data = new ArrayList<Comparable>();
+    boolean fullPass = false;
+    for (int i=0; i < array.size();i++){
+      data.add(array.get(i));
+    }
+    while (! fullPass) {
+        fullPass = true;
+        for(int i = array.size() - 1; i > 0; i--) {
+          if (array.get(i)<array.get(i - 1)) {
+              swap(i,i-1);
+              fullPass = false;
+          }
+        }
+      }
+    }
   
   void selectionSort(){
     background(255, 204, 0);
