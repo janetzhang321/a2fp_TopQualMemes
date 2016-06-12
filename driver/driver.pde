@@ -71,13 +71,8 @@ void setup(){
     insertionSortButton();
     notOnButton();
     sorty();
-    drawArray();
+    //drawArray();
     println(current);
-    /*
-    while (array.size()==2){
-      swap(0,1);
-    }
-    */
   }
   
   public void drawArray() {
@@ -102,6 +97,8 @@ void setup(){
      array.get(i2).setCoors(oneCoors);
      array.set(i1, two);
      array.set(i2, one);
+     one.fill(200);
+     two.fill(200);
    }
   
   public void notOnButton() {
@@ -338,9 +335,10 @@ void setup(){
         for(int i = array.size() - 1; i > 0; i--) {
           if (Integer.parseInt(array.get(i).getName())<Integer.parseInt(array.get(i-1).getName())) {
               swap(i,i-1);
+              //delay(1000);
+              drawArray();
               fullPass = false;
           }
-          //drawArray();
           //redraw();
         }        
     }
