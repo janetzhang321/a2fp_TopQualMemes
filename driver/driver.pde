@@ -16,46 +16,39 @@ import controlP5.*;
 ControlP5 cp5;
 
 String textValue = "";
+ArrayList<element> array=new ArrayList<element>();
+boolean runMethod;
 
-  ArrayList<element> array=new ArrayList<element>();
-  boolean runMethod;
-  
-  
-  
-  
   void setup(){
    //set bkgrnd size
-   fullScreen();
+   size(700, 400);
+   //fullScreen();
    //and color
    background (225);
    //choose menuPFont font = createFont("arial",20);
     PFont font = createFont("arial",20);
 
-  cp5 = new ControlP5(this);
-  
-  cp5.addTextfield("input")
-     .setPosition(20,20)
-     .setSize(100,20)
-     .setFont(font)
-     .setFocus(true)
-     .setColor(color(255,0,0))
-     ;
+    cp5 = new ControlP5(this);
+    
+    cp5.addTextfield("input")
+       .setPosition(20,20)
+       .setSize(100,20)
+       .setFont(font)
+       .setFocus(true)
+       .setColor(color(255,0,0))
+       ;
+         
+    cp5.addBang("enter")
+       .setPosition(140,20)
+       .setSize(40,20)
+       .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+       ;
        
-  cp5.addBang("clear")
-     .setPosition(140,20)
-     .setSize(40,20)
-     .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-     ;
-     
-  textFont(font);
-   run();
-  }
+    textFont(font);
+     run();
+    }
 
   void draw () {
-  fill(255);
-  text(cp5.get(Textfield.class,"input").getText(), 200,37);
-    
-    noLoop();
     
   }
   
@@ -81,29 +74,17 @@ String textValue = "";
   }
   
   void run(){
-    input(textValue);
+    enter();
     play();
   }
   
-
-public void clear() {
-  cp5.get(Textfield.class,"textValue").clear();
-}
-
-
-void controlEvent(ControlEvent theEvent) {
-  if(theEvent.isAssignableFrom(Textfield.class)) {
-    println("controlEvent: accessing a string from controller '"
-            +theEvent.getName()+"': "
-            +theEvent.getStringValue()
-            );
-  }
-}
-
-public void input(String theText) {
+public void enter() {
   try {
+    String theText = cp5.get(Textfield.class,"input").getText();
     addE(Integer.parseInt(theText));
+    cp5.get(Textfield.class,"input").setText("");
   } catch (Exception e) {
+    cp5.get(Textfield.class,"input").setText("");
     println("input was not numerical");
   }
 }
