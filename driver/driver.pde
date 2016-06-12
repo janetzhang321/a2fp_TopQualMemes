@@ -74,8 +74,7 @@ void setup(){
     notOnButton();
     sortySelect();
     sorty(); 
-    drawArray();
-    println(current);
+    drawArray(); 
   }
   
   public void drawArray() {
@@ -281,7 +280,7 @@ void setup(){
           currSort = new BubbleSort(array);
       }
       else if (current=="selection"){
-          return;
+          currSort = new InsertionSort(array);
       }
       else if (current=="insertion"){
           currSort = new InsertionSort(array);

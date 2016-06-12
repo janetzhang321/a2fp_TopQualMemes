@@ -14,6 +14,7 @@ public abstract class Sort{
   public boolean getDone() {
     return done;
   }
+  
    public void swap(int i1, int i2) {
      element one = data.get(i1);
      element two = data.get(i2);
