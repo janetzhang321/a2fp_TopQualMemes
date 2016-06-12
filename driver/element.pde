@@ -44,9 +44,12 @@ public class element {
     return name;
   }
   
-  public void setCoors(float[] newCoors) {
-    coors = newCoors;
-    redraw(); //Might have to comment out if redraw is written outside
+  public void setCoors(float[] b) {
+    coors = b;
+  }
+  
+  public void setName(String s) {
+    name = s;
   }
   
   //text
