@@ -18,7 +18,7 @@ private ArrayList<element> array=new ArrayList<element>();
 private boolean runMethod;//true for manual turned on
 private boolean start;//starts play method
 private String current=null;
-private BubbleSort currSort;
+private Sort currSort;
 
 
 
@@ -153,6 +153,24 @@ void setup(){
     }
   }
     
+  public boolean mergeSortButton(){
+    //This writes the coordinates of the button (x coor, y coor, width, height)
+    float[] buttonCoor = {width-220,60,25,10};
+    //This creates the button
+    button merge = new button("Merge",buttonCoor);
+    //This checks for hover
+    //If the mouse is over the button, then it sets the current button to the button the mouse is over
+    if (merge.hover()) {
+      current = "merge";
+      return true;
+    }
+    //Otherwise, the mouse is over no button
+    else {
+      return false;
+    }
+  }
+  
+  
   public boolean manualButton(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {225,30,20,10};
@@ -274,13 +292,12 @@ void setup(){
     //if (mousePressed) {
       if (current=="bubble" && mousePressed){
           currSort = new BubbleSort(array);
-          println("test");
       }
-      else if (current=="selection"){
+      else if (current=="selection" && mousePressed){
           return;
       }
-      else if (current=="insertion"){
-          return;
+      else if (current=="insertion" && mousePressed){
+          currSort = new InsertionSort(array);
       } 
     //}
   }
@@ -289,9 +306,9 @@ void setup(){
     if (currSort == null) {
       return;
     }
-    else if (currSort instanceof BubbleSort) {
+    else {
       
-      ArrayList<element> temp = currSort.bSort();
+      ArrayList<element> temp = currSort.sortArr();
       for (int i = 0; i < temp.size(); i++) {
         array.set(i, temp.get(i));
       }
@@ -300,4 +317,5 @@ void setup(){
         currSort = null;
       }
     }
-  } 
+  }
+  
