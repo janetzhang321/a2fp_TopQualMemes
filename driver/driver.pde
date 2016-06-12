@@ -19,6 +19,8 @@ private boolean runMethod;//true for manual turned on
 private boolean start;//starts play method
 private String current=null;
 
+
+
 void setup(){
    //set bkgrnd size
    size(700, 400);
@@ -97,8 +99,6 @@ void setup(){
      array.get(i2).setCoors(oneCoors);
      array.set(i1, two);
      array.set(i2, one);
-     one.fill(200);
-     two.fill(200);
    }
   
   public void notOnButton() {
