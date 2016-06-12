@@ -16,6 +16,11 @@ public class element {
     selected = false;
     
     name = words;
+    draw();
+  }
+  
+  //idk
+  void draw() {
     
     //creating a rect
     rectMode(RADIUS);
@@ -26,11 +31,7 @@ public class element {
     //create rectangle
     rect(coors[0],coors[1],coors[2],coors[3]); 
     //fill w. words
-    fillText(words);
-  }
-  
-  //idk
-  void draw() {
+    fillText(name);
     
   }
   
@@ -58,11 +59,12 @@ public class element {
     fill(25);
     text(words,coors[0],coors[1],coors[2],coors[3]);
   }
-  
+  /*
   public void swap(element swapper) {
     float[] swapperCoors = swapper.getCoors();
     swapper.setCoors(this.getCoors());
     this.setCoors(swapperCoors);
   }
+  */
 
 }

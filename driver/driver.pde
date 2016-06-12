@@ -56,6 +56,9 @@ void setup(){
     selectionSort();
     insertionSort();
     drawArray();
+    while (array.size()==2){
+      swap(0,1);
+    }
   }
   
   public void drawArray() {
@@ -71,6 +74,17 @@ void setup(){
      }
   }
   
+   public void swap(int i1, int i2) {
+     element one = array.get(i1);
+     element two = array.get(i2);
+     float[] oneCoors = one.getCoors();
+     float[] twoCoors = two.getCoors();
+     array.get(i1).setCoors(twoCoors);
+     array.get(i2).setCoors(oneCoors);
+     array.set(i1, two);
+     array.set(i2, one); 
+   }
+    
   public void bubbleSort(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {width-60,30,25,10};
@@ -191,7 +205,7 @@ void setup(){
     }
   }
 
-  void mousePressed() {
+  public void mousePressed() {
     if (current != null) {
       println(current.getName());
     }
