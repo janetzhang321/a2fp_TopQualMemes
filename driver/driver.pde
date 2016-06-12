@@ -70,11 +70,12 @@ void setup(){
     bubbleSortButton();
     selectionSortButton();
     insertionSortButton();
-    mergeSortButton();
+    clearButton();
     notOnButton();
     sortySelect();
     sorty(); 
     drawArray();
+    println(current);
   }
   
   public void drawArray() {
@@ -95,7 +96,7 @@ void setup(){
     if (!bubbleSortButton() && 
         !selectionSortButton() && 
         !insertionSortButton() &&
-        !mergeSortButton())
+        !clearButton())
         {
           current = null;
         }
@@ -151,16 +152,16 @@ void setup(){
       return false;
     }
   }
-    
-  public boolean mergeSortButton(){
+  
+  public boolean clearButton(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
-    float[] buttonCoor = {width-220,60,25,10};
+    float[] buttonCoor = {220,30,20,10};
     //This creates the button
-    button merge = new button("Merge",buttonCoor);
+    button clear = new button("Clear",buttonCoor);
     //This checks for hover
     //If the mouse is over the button, then it sets the current button to the button the mouse is over
-    if (merge.hover()) {
-      current = "merge";
+    if (clear.hover()) {
+      current = "clear";
       return true;
     }
     //Otherwise, the mouse is over no button
@@ -211,13 +212,15 @@ void setup(){
       //creating a rect
       rectMode(RADIUS);
       //fil bakgrnd
+      strokeWeight(5);
       fill(225);
       stroke(225);
       //create rectangle
       rect(start[0],start[1],start[2],start[3]);
+      strokeWeight(1);
     }
     
-    if (n == 0) {
+    else if (n == 0) {
        element e=new element(temp.get(0), start,""); 
        array.add(e);
        
@@ -240,10 +243,12 @@ void setup(){
     //creating a rect
     rectMode(RADIUS);
     //fil bakgrnd
-    fill(225);
+    strokeWeight(5);
+    fill(225);    
     stroke(225);
     //create rectangle
     rect(nextBox[0],nextBox[1],nextBox[2],nextBox[3]);
+    strokeWeight(1);
     }
   }
   
@@ -270,17 +275,23 @@ void setup(){
   }
   
   public void sortySelect() {
-    //if (mousePressed) {
-      if (current=="bubble" && mousePressed){
+    if (mousePressed) {
+      if (current=="bubble"){
+          println("test");
           currSort = new BubbleSort(array);
       }
-      else if (current=="selection" && mousePressed){
+      else if (current=="selection"){
           return;
       }
-      else if (current=="insertion" && mousePressed){
+      else if (current=="insertion"){
           currSort = new InsertionSort(array);
-      } 
-    //}
+      }
+      else if (current=="clear"){
+          while (array.size() > 0) {            
+            deleteE(0);
+          }
+      }
+    }
   }
   
   public void sorty() {

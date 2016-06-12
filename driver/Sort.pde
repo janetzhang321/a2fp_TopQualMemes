@@ -17,8 +17,8 @@ public abstract class Sort{
    public void swap(int i1, int i2) {
      element one = data.get(i1);
      element two = data.get(i2);
-     two.setElementType("interested");
-     one.setElementType("selected");
+     two.setElementType("red");
+     one.setElementType("red");
      float[] oneCoors = one.getCoors();
      float[] twoCoors = two.getCoors();
      data.get(i1).setCoors(twoCoors);   

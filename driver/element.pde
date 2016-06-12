@@ -21,15 +21,19 @@ public class element {
     fill(255);    
     //draw border
     strokeWeight(4);
+    //defaut is green
     stroke(37,255,0);
-    if (elementType=="selected"){
+    if (elementType=="red"){
       stroke(232,44,12);
     }
-    else if (elementType=="interested"){
+    else if (elementType=="yellow"){
       stroke(255,224,0);
     }
-    else if (elementType=="sorted"){
+    else if (elementType=="blue"){
       stroke(3,51,255);
+    }
+    else if (elementType=="purple"){
+      stroke(128,13,255);
     }
     //strokeWeight(1);
     //create rectangle
