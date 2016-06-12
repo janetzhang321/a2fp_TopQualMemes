@@ -71,6 +71,7 @@ void setup(){
     selectionSortButton();
     insertionSortButton();
     clearButton();
+    scrambleButton();
     notOnButton();
     sortySelect();
     sorty(); 
@@ -96,7 +97,8 @@ void setup(){
     if (!bubbleSortButton() && 
         !selectionSortButton() && 
         !insertionSortButton() &&
-        !clearButton())
+        !clearButton() &&
+        !scrambleButton())
         {
           current = null;
         }
@@ -155,13 +157,30 @@ void setup(){
   
   public boolean clearButton(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
-    float[] buttonCoor = {220,30,20,10};
+    float[] buttonCoor = {220,30,20,9};
     //This creates the button
     button clear = new button("Clear",buttonCoor);
     //This checks for hover
     //If the mouse is over the button, then it sets the current button to the button the mouse is over
     if (clear.hover()) {
       current = "clear";
+      return true;
+    }
+    //Otherwise, the mouse is over no button
+    else {
+      return false;
+    }
+  }
+  
+  public boolean scrambleButton(){
+    //This writes the coordinates of the button (x coor, y coor, width, height)
+    float[] buttonCoor = {220,80,20,9};
+    //This creates the button
+    button scramble = new button("Scram",buttonCoor);
+    //This checks for hover
+    //If the mouse is over the button, then it sets the current button to the button the mouse is over
+    if (scramble.hover()) {
+      current = "scramble";
       return true;
     }
     //Otherwise, the mouse is over no button
@@ -287,9 +306,10 @@ void setup(){
           currSort = new InsertionSort(array);
       }
       else if (current=="clear"){
-          while (array.size() > 0) {            
-            deleteE(0);
-          }
+          clearVal();
+      }
+      else if (current=="scramble"){
+          scramble();
       }
     }
   }
@@ -308,6 +328,31 @@ void setup(){
       if (currSort.getDone()) {
         currSort = null;
       }
+    }
+  }
+  
+  public void clearVal() {
+      while (array.size() > 0) {            
+            deleteE(0);
+          }
+  }
+  public void scramble() {
+    ArrayList<String> temp = new ArrayList<String>();
+    for (int i = 0; i < array.size(); i++) {
+      temp.add(array.get(i).getName());
+    }
+    
+    for (int i = 0; i < temp.size(); i++) {
+      String swapVal = temp.get(i);
+      int swapInd = (int) (Math.random() * temp.size());
+      temp.set(i, temp.get(swapInd));
+      temp.set(swapInd, swapVal);
+    }
+    
+    clearVal();
+    
+    while (temp.size() > 0) {
+      addE(Integer.parseInt(temp.remove(0)));
     }
   }
   
