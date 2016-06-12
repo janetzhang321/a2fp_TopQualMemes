@@ -15,7 +15,7 @@ ControlP5 cp5;
 
 private String textValue = "";
 private ArrayList<element> array=new ArrayList<element>();
-private boolean runMethod;//true for manual turned on
+private boolean runMethod;//true for  turned on
 private boolean start;//starts play method
 private String current=null;
 private Sort currSort;
@@ -67,15 +67,13 @@ void setup(){
 
   void draw () {
     //create buttons 
-    manualButton();
     bubbleSortButton();
     selectionSortButton();
     insertionSortButton();
     mergeSortButton();
     notOnButton();
     sortySelect();
-    sorty();
-    println("current sort" + currSort);
+    sorty(); 
     drawArray();
   }
   
@@ -97,8 +95,7 @@ void setup(){
     if (!bubbleSortButton() && 
         !selectionSortButton() && 
         !insertionSortButton() &&
-        !mergeSortButton() &&
-        !manualButton())
+        !mergeSortButton())
         {
           current = null;
         }
@@ -164,24 +161,6 @@ void setup(){
     //If the mouse is over the button, then it sets the current button to the button the mouse is over
     if (merge.hover()) {
       current = "merge";
-      return true;
-    }
-    //Otherwise, the mouse is over no button
-    else {
-      return false;
-    }
-  }
-  
-  
-  public boolean manualButton(){
-    //This writes the coordinates of the button (x coor, y coor, width, height)
-    float[] buttonCoor = {225,30,20,10};
-    //This creates the button
-    button manual = new button("Manual",buttonCoor);
-    //This checks for hover
-    //If the mouse is over the button, then it sets the current button to the button the mouse is over
-    if (manual.hover()) {
-      current = "manual";
       return true;
     }
     //Otherwise, the mouse is over no button
@@ -319,5 +298,13 @@ void setup(){
         currSort = null;
       }
     }
+  }
+  
+  public void input(String theText) {
+    addE(Integer.parseInt(theText));
+  }
+  
+  public void index(String theText) {
+    deleteE(Integer.parseInt(theText)); 
   }
   
