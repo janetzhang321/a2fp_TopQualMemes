@@ -71,6 +71,7 @@ void setup(){
     bubbleSortButton();
     selectionSortButton();
     insertionSortButton();
+    mergeSortButton();
     notOnButton();
     sortySelect();
     sorty();
@@ -96,6 +97,7 @@ void setup(){
     if (!bubbleSortButton() && 
         !selectionSortButton() && 
         !insertionSortButton() &&
+        !mergeSortButton() &&
         !manualButton())
         {
           current = null;
