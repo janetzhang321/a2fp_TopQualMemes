@@ -22,7 +22,7 @@ public class button{
   }
   
   void draw(){
-
+    
   }
   
   public String getName() {
@@ -52,12 +52,42 @@ public class button{
     if (mouseX>= x-w && mouseX <= x+w &&
         mouseY>= y-h && mouseY <= y+h) {
           fill(31,34,0);
+            
+            if (mousePressed){
+              mousePressed();
+            }
+          
           return this;
         }
     else {
       fill(31,34,255);
       return null;
     }
+  }
+  
+  public void mousePressed(){
+    if (name=="Bubble"){
+        bubbleSort();
+    }
+    if (name=="Selection"){
+      selectionSort();
+    }
+    if (name=="Insertion"){
+      insertionSort();
+    }
+  }
+  
+  void bubbleSort(){
+    //just random test code
+    background(0);   // Clear the screen with a black background
+  }
+  
+  void selectionSort(){
+    background(255, 204, 0);
+  }
+  
+  void insertionSort(){
+    background(232,100,25);
   }
  
 }

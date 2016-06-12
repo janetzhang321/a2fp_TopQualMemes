@@ -51,6 +51,7 @@ void setup(){
   void draw () {
     //create buttons 
     manualButton();
+    playButton();
     bubbleSort();
     selectionSort();
     insertionSort();
@@ -113,6 +114,22 @@ void setup(){
     //If the mouse is over the button, then it sets the current button to the button the mouse is over
     if (manual.hover() != null) {
       current = manual.hover();
+    }
+    //Otherwise, the mouse is over no button
+    else {
+      current = null;
+    }
+  }
+  
+  void playButton(){
+    //This writes the coordinates of the button (x coor, y coor, width, height)
+    float[] buttonCoor = {300,30,20,10};
+    //This creates the button
+    button play = new button("Play",buttonCoor);
+    //This checks for hover
+    //If the mouse is over the button, then it sets the current button to the button the mouse is over
+    if (play.hover() != null) {
+      current = play.hover();
     }
     //Otherwise, the mouse is over no button
     else {
