@@ -26,7 +26,8 @@ void setup(){
    //and color
    background (225);
    //choose menuPFont font = createFont("arial",20);
-   PFont font = createFont("arial",20);
+   //drawInput();
+       PFont font = createFont("arial",20);
 
     cp5 = new ControlP5(this);
     
@@ -38,12 +39,25 @@ void setup(){
        .setColor(color(255,0,0))
        ;
          
-    cp5.addBang("enter")
+    cp5.addBang("insert")
        .setPosition(140,20)
        .setSize(40,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+       ; 
+   
+   cp5.addTextfield("index")
+       .setPosition(20,70)
+       .setSize(100,20)
+       .setFont(font)
+       .setFocus(true)
+       .setColor(color(255,0,0))
        ;
-
+         
+    cp5.addBang("delete")
+       .setPosition(140,70)
+       .setSize(40,20)
+       .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+       ;    
     
     //run();
     }
@@ -56,9 +70,11 @@ void setup(){
     selectionSort();
     insertionSort();
     drawArray();
+    /*
     while (array.size()==2){
       swap(0,1);
     }
+    */
   }
   
   public void drawArray() {
@@ -73,7 +89,7 @@ void setup(){
        }
      }
   }
-  
+  /*
    public void swap(int i1, int i2) {
      element one = array.get(i1);
      element two = array.get(i2);
@@ -84,7 +100,7 @@ void setup(){
      array.set(i1, two);
      array.set(i2, one);
    }
-    
+    */
   public void bubbleSort(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {width-60,30,25,10};
@@ -181,12 +197,44 @@ void setup(){
         element e=new element(new Integer(i).toString(), b); 
         array.add(e);
     }
+    
     else{
       element e=new element(new Integer(i).toString(), findCoor(25)); 
       array.add(e);
     }
   }
 
+  public void deleteE(int n) {
+    
+    if (n > array.size()) {
+      return;
+    }
+    
+    ArrayList<String> temp = new ArrayList<String>();
+    while (array.size() > n+1) {
+      temp.add(array.get(n+1).getName());
+      array.remove(n+1);
+    }
+    
+    array.remove(n);
+    
+    for (int i = 0; i < temp.size(); i++) {
+      element e = new element(temp.get(i), findCoor(25));
+      array.add(e);  
+    }
+    
+    //This deletes the remnant box that Processing drew
+    float[] nextBox = findCoor(25);
+    
+    //creating a rect
+    rectMode(RADIUS);
+    //fil bakgrnd
+    fill(225);
+    stroke(225);
+    //create rectangle
+    rect(nextBox[0],nextBox[1],nextBox[2],nextBox[3]);
+  }
+    
   /*
   void run(){
     enter();
@@ -194,7 +242,7 @@ void setup(){
   }
   */
   
-  public void enter() {
+  public void insert() {
     try {
       String theText = cp5.get(Textfield.class,"input").getText();
       addE(Integer.parseInt(theText));
@@ -204,7 +252,18 @@ void setup(){
       println("input was not numerical");
     }
   }
-
+  
+  public void delete() {
+    try {
+      String theText = cp5.get(Textfield.class,"index").getText();
+      deleteE(Integer.parseInt(theText));
+      cp5.get(Textfield.class,"index").setText("");
+    } catch (Exception e) {
+      cp5.get(Textfield.class,"index").setText("");
+      println("input was not numerical");
+    }
+  }
+  
   public void mousePressed() {
     if (current != null) {
       println(current.getName());
