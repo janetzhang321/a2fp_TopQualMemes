@@ -42,7 +42,7 @@ void setup(){
        .setPosition(140,20)
        .setSize(40,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-       ;    
+       ;
 
     
     //run();
@@ -63,7 +63,6 @@ void setup(){
        return;
      }
      else {
-       float[] b={50,250,25,25};
        element e = new element(array.get(0).getName(),array.get(0).getCoors());
        for (int i = 1; i < array.size(); i++) {
          element pho = array.get(i);
