@@ -17,7 +17,8 @@ ControlP5 cp5;
 
 String textValue = "";
 ArrayList<element> array=new ArrayList<element>();
-boolean runMethod;
+boolean runMethod;//true for manual turned on
+boolean start;//starts play method
 
   void setup(){
    //set bkgrnd size
@@ -45,7 +46,10 @@ boolean runMethod;
        ;
        
     textFont(font);
-     run();
+    //create buttons
+    button manual=new button("manual",200,20); manual.draw();
+    
+    run();
     }
 
   void draw () {
@@ -78,20 +82,31 @@ boolean runMethod;
     play();
   }
   
-public void enter() {
-  try {
-    String theText = cp5.get(Textfield.class,"input").getText();
-    addE(Integer.parseInt(theText));
-    cp5.get(Textfield.class,"input").setText("");
-  } catch (Exception e) {
-    cp5.get(Textfield.class,"input").setText("");
-    println("input was not numerical");
+  public void enter() {
+    try {
+      String theText = cp5.get(Textfield.class,"input").getText();
+      addE(Integer.parseInt(theText));
+      cp5.get(Textfield.class,"input").setText("");
+    } catch (Exception e) {
+      cp5.get(Textfield.class,"input").setText("");
+      println("input was not numerical");
+    }
   }
-}
+
+  void mouseClicked() {
+    
+  }
 
   void play(){
-    //starts when play button is pressed
-    //if manual is selected, then sets inst var of sort to manual
-    //runs the sort
+    //starts when sort button is pressed
+    
+    if (start){
+      if (runMethod){//run manual sort
+    
+      }
+      else{ //start automatic animation
+      
+      }
+    }
   }
   
