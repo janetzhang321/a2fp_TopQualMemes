@@ -1,10 +1,10 @@
-class element {
+public class element {
   
-  float[] coors = new float[4];
-  boolean interested, sorted, selected;
+  private float[] coors = new float[4];
+  private boolean interested, sorted, selected;
   
   //constructor
-  element(String words, float[] inputCoors){
+  public element(String words, float[] inputCoors){
     //finding space
     for (int x=0;x<coors.length;x++){
       coors[x]=inputCoors[x];
@@ -32,18 +32,18 @@ class element {
   }
   
   //accessors
-  float[] getCoors(){
+  public float[] getCoors(){
     float[] a = {coors[0],coors[1],coors[2],coors[3]};
     return a;
   }
   
-  void setCoors(float[] newCoors) {
+  public void setCoors(float[] newCoors) {
     coors = newCoors;
     redraw(); //Might have to comment out if redraw is written outside
   }
   
   //text
-  void fillText(String words){
+  public void fillText(String words){
     //center words
     textAlign(CENTER,CENTER);
     rectMode(RADIUS);
@@ -52,7 +52,7 @@ class element {
     text(words,coors[0],coors[1],coors[2],coors[3]);
   }
   
-  void swap(element swapper) {
+  public void swap(element swapper) {
     float[] swapperCoors = swapper.getCoors();
     swapper.setCoors(this.getCoors());
     this.setCoors(swapperCoors);

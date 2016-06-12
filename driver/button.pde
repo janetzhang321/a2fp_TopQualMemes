@@ -1,9 +1,9 @@
-class button{
+public class button{
   
-  float[] coors = new float[4];
-  String name;
+  private float[] coors = new float[4];
+  private String name;
   
-  button(String words, float[] inputCoors) {
+  public button(String words, float[] inputCoors) {
      //finding space
       for (int x=0;x<coors.length;x++){
         coors[x]=inputCoors[x];
@@ -25,11 +25,11 @@ class button{
 
   }
   
-  String getName() {
+  public String getName() {
     return name;
   }
   
-  void fillText(String words){
+  public void fillText(String words){
     //center words
     textFont(createFont("arial", 15));
     textAlign(CENTER,CENTER);
@@ -39,7 +39,7 @@ class button{
     text(words,coors[0],coors[1],coors[2],coors[3]);
   }
   
-  button hover() {
+  public button hover() {
     float x,y,w,h;
     
     x = coors[0];

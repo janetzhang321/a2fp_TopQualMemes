@@ -9,19 +9,17 @@
 * www.sojamo.de/libraries/controlp5
 *
 */
-
-
 import controlP5.*;
 
 ControlP5 cp5;
 
-String textValue = "";
-ArrayList<element> array=new ArrayList<element>();
-boolean runMethod;//true for manual turned on
-boolean start;//starts play method
-button current;
+private String textValue = "";
+private ArrayList<element> array=new ArrayList<element>();
+private boolean runMethod;//true for manual turned on
+private boolean start;//starts play method
+private button current;
 
-  void setup(){
+void setup(){
    //set bkgrnd size
    size(700, 400);
    //fullScreen();
@@ -47,20 +45,28 @@ button current;
        ;    
 
     
-    run();
+    //run();
     }
 
   void draw () {
     //create buttons
+    //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {width-60,40,35,20};
+    //This creates the button
     button manual = new button("Bubble",buttonCoor);
+    //This checks for hover
+    //If the mouse is over the button, then it sets the current button to the button the mouse is over
     if (manual.hover() != null) {
       current = manual.hover();
+    }
+    //Otherwise, the mouse is over no button
+    else {
+      current = null;
     }
   }
   
   //find where to put the next box, like in an array
-  float[] findCoor(float size){
+public float[] findCoor(float size){
     //default
     float[] newCoor = array.get(array.size()-1).getCoors();
     newCoor[0] += size*2;
@@ -68,7 +74,7 @@ button current;
     return newCoor;
   }
   
-  void addE(int i){
+public void addE(int i){
     if (array.size()==0){
         float[] b={50,250,25,25};
         element e=new element(new Integer(i).toString(), b); 
@@ -79,11 +85,13 @@ button current;
       array.add(e);
     }
   }
-  
+
+  /*
   void run(){
     enter();
     play();
   }
+  */
   
   public void enter() {
     try {
@@ -97,10 +105,13 @@ button current;
   }
 
   void mousePressed() {
+    if (current != null) {
       println(current.getName());
+    }
   }
 
-  void play(){
+/*
+  public void play(){
     //starts when sort button is pressed
     
     if (start){
@@ -112,4 +123,4 @@ button current;
       }
     }
   }
-  
+  */
