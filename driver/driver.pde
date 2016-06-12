@@ -43,7 +43,6 @@ void setup(){
        .setPosition(140,20)
        .setSize(40,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-<<<<<<< HEAD
        ; 
    
    cp5.addTextfield("index")
@@ -59,11 +58,6 @@ void setup(){
        .setSize(40,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;    
-   //drawDelete();
-=======
-       ;
-
->>>>>>> 01f4de7b3019067ac6cd3b82cb233bc4fdc3632c
     
     //run();
     }
@@ -76,50 +70,13 @@ void setup(){
     selectionSort();
     insertionSort();
     drawArray();
+    /*
     while (array.size()==2){
       swap(0,1);
     }
+    */
   }
   
-  public void drawInput() {
-    PFont font = createFont("arial",20);
-
-    cp5 = new ControlP5(this);
-    
-    cp5.addTextfield("input")
-       .setPosition(20,20)
-       .setSize(100,20)
-       .setFont(font)
-       .setFocus(true)
-       .setColor(color(255,0,0))
-       ;
-         
-    cp5.addBang("insert")
-       .setPosition(140,20)
-       .setSize(40,20)
-       .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-       ;    
-  }
-
-  public void drawDelete() {
-    PFont font = createFont("arial",20);
-
-    cp5 = new ControlP5(this);
-    
-    cp5.addTextfield("index")
-       .setPosition(20,70)
-       .setSize(100,20)
-       .setFont(font)
-       .setFocus(true)
-       .setColor(color(255,0,0))
-       ;
-         
-    cp5.addBang("delete")
-       .setPosition(140,70)
-       .setSize(40,20)
-       .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-       ;    
-  }
   public void drawArray() {
      if (array.size() == 0) {
        return;
@@ -132,7 +89,7 @@ void setup(){
        }
      }
   }
-  
+  /*
    public void swap(int i1, int i2) {
      element one = array.get(i1);
      element two = array.get(i2);
@@ -143,7 +100,7 @@ void setup(){
      array.set(i1, two);
      array.set(i2, one); 
    }
-    
+    */
   public void bubbleSort(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {width-60,30,25,10};
@@ -295,7 +252,6 @@ void setup(){
       println("input was not numerical");
     }
   }
-<<<<<<< HEAD
   
   public void delete() {
     try {
@@ -308,11 +264,7 @@ void setup(){
     }
   }
   
-  void mousePressed() {
-=======
-
   public void mousePressed() {
->>>>>>> 01f4de7b3019067ac6cd3b82cb233bc4fdc3632c
     if (current != null) {
       println(current.getName());
     }
