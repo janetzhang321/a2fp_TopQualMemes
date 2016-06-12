@@ -2,6 +2,7 @@ public class element {
   
   private float[] coors = new float[4];
   private boolean interested, sorted, selected;
+  private String name;
   
   //constructor
   public element(String words, float[] inputCoors){
@@ -13,6 +14,8 @@ public class element {
     interested = false;
     sorted = false;
     selected = false;
+    
+    name = words;
     
     //creating a rect
     rectMode(RADIUS);
@@ -35,6 +38,10 @@ public class element {
   public float[] getCoors(){
     float[] a = {coors[0],coors[1],coors[2],coors[3]};
     return a;
+  }
+  
+  public String getName() {
+    return name;
   }
   
   public void setCoors(float[] newCoors) {

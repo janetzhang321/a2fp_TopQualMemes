@@ -55,9 +55,24 @@ void setup(){
     bubbleSort();
     selectionSort();
     insertionSort();
+    drawArray();
   }
   
-  void bubbleSort(){
+  public void drawArray() {
+     if (array.size() == 0) {
+       return;
+     }
+     else {
+       float[] b={50,250,25,25};
+       element e = new element(array.get(0).getName(),array.get(0).getCoors());
+       for (int i = 1; i < array.size(); i++) {
+         element pho = array.get(i);
+         element redraw = new element(pho.getName(),pho.getCoors());
+       }
+     }
+  }
+  
+  public void bubbleSort(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {width-60,30,25,10};
     //This creates the button
@@ -73,7 +88,7 @@ void setup(){
     }
   }
   
-  void selectionSort(){
+  public void selectionSort(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {width-140,30,25,10};
     //This creates the button
@@ -89,7 +104,7 @@ void setup(){
     }
   }
   
-  void insertionSort(){
+  public void insertionSort(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {width-220,30,25,10};
     //This creates the button
@@ -105,7 +120,7 @@ void setup(){
     }
   }
   
-  void manualButton(){
+  public void manualButton(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {225,30,20,10};
     //This creates the button
@@ -121,7 +136,7 @@ void setup(){
     }
   }
   
-  void playButton(){
+  public void playButton(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {300,30,20,10};
     //This creates the button
