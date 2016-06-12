@@ -18,6 +18,7 @@ private ArrayList<element> array=new ArrayList<element>();
 private boolean runMethod;//true for manual turned on
 private boolean start;//starts play method
 private String current=null;
+private BubbleSort currSort;
 
 
 
@@ -67,14 +68,14 @@ void setup(){
   void draw () {
     //create buttons 
     manualButton();
-    playButton();
     bubbleSortButton();
     selectionSortButton();
     insertionSortButton();
     notOnButton();
+    sortySelect();
     sorty();
-    //drawArray();
-    println(current);
+    println("current sort" + currSort);
+    drawArray();
   }
   
   public void drawArray() {
@@ -90,23 +91,11 @@ void setup(){
      }
   }
   
-   public void swap(int i1, int i2) {
-     element one = array.get(i1);
-     element two = array.get(i2);
-     float[] oneCoors = one.getCoors();
-     float[] twoCoors = two.getCoors();
-     array.get(i1).setCoors(twoCoors);   
-     array.get(i2).setCoors(oneCoors);
-     array.set(i1, two);
-     array.set(i2, one);
-   }
-  
   public void notOnButton() {
     if (!bubbleSortButton() && 
         !selectionSortButton() && 
         !insertionSortButton() &&
-        !manualButton() &&
-        !playButton())
+        !manualButton())
         {
           current = null;
         }
@@ -179,24 +168,6 @@ void setup(){
       return false;
     }
   }
-  
-  public boolean playButton(){
-    //This writes the coordinates of the button (x coor, y coor, width, height)
-    float[] buttonCoor = {300,30,20,10};
-    //This creates the button
-    button play = new button("Play",buttonCoor);
-    //This checks for hover
-    //If the mouse is over the button, then it sets the current button to the button the mouse is over
-    if (play.hover()) {
-      current = "play";
-      return true;
-    }
-    //Otherwise, the mouse is over no button
-    else {
-      return false;
-    } 
-  }
-  
   
   //find where to put the next box, like in an array
   public float[] findCoor(float size){
@@ -275,13 +246,6 @@ void setup(){
     rect(nextBox[0],nextBox[1],nextBox[2],nextBox[3]);
     }
   }
-    
-  /*
-  void run(){
-    enter();
-    play();
-  }
-  */
   
   public void insert() {
     try {
@@ -305,10 +269,10 @@ void setup(){
     }
   }
   
-  public void sorty() {
-    if (mousePressed) {
-      if (current=="bubble"){
-          bubbleSort();
+  public void sortySelect() {
+    //if (mousePressed) {
+      if (current=="bubble" && mousePressed){
+          currSort = new BubbleSort(array);
           println("test");
       }
       else if (current=="selection"){
@@ -317,50 +281,27 @@ void setup(){
       else if (current=="insertion"){
           return;
       } 
-    }
+    //}
   }
   
-  public void bubbleSort(){
-    //just random test code
-    //noLoop();
-    //background(0);   // Clear the screen with a black background
-    //redraw();
-    ArrayList data = new ArrayList();
-    boolean fullPass = false;
-    for (int i=0; i < array.size();i++){
-      data.add(array.get(i));
+  public void sorty() {
+    if (currSort == null) {
+      return;
     }
-    while (! fullPass) {
-        fullPass = true;
-        for(int i = array.size() - 1; i > 0; i--) {
-          if (Integer.parseInt(array.get(i).getName())<Integer.parseInt(array.get(i-1).getName())) {
-              swap(i,i-1);
-              //delay(1000);
-              drawArray();
-              fullPass = false;
-          }
-          //redraw();
-        }        
+    else if (currSort instanceof BubbleSort) {
+      
+      ArrayList<element> temp = currSort.bSort();
+      for (int i = 0; i < temp.size(); i++) {
+        array.set(i, temp.get(i));
+      }
+      delay(500);
+      if (currSort.getDone()) {
+        currSort = null;
+      }
     }
-    //loop();
   }
   /*
   public mousePressed(){
     
   }
 */
-
-/*
-  public void play(){
-    //starts when sort button is pressed
-    
-    if (start){
-      if (runMethod){//run manual sort
-    
-      }
-      else{ //start automatic animation
-      
-      }
-    }
-  }
-  */

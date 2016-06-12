@@ -1,27 +1,20 @@
 public class element {
   
   private float[] coors = new float[4];
-  private boolean interested, sorted, selected;
+  private String elementType;
   private String name;
   
   //constructor
-  public element(String words, float[] inputCoors){
+  public element(String words, float[] inputCoors, String inputType){
     //finding space
     for (int x=0;x<coors.length;x++){
       coors[x]=inputCoors[x];
     }
     
-    interested = false;
-    sorted = false;
-    selected = false;
+    elementType = inputType;
     
     name = words;
-    draw();
-  }
-  
-  //idk
-  void draw() {
-    
+        
     //creating a rect
     rectMode(RADIUS);
     //fil bakgrnd
@@ -32,6 +25,11 @@ public class element {
     rect(coors[0],coors[1],coors[2],coors[3]); 
     //fill w. words
     fillText(name);
+  }
+  
+  //idk
+  void draw() {
+
     
   }
   
