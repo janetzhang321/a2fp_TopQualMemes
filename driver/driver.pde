@@ -52,7 +52,7 @@ void setup(){
        .setPosition(20,70)
        .setSize(100,20)
        .setFont(font)
-       .setFocus(true)
+       .setFocus(false)
        .setColor(color(255,0,0))
        ;
          
