@@ -19,6 +19,7 @@ String textValue = "";
 ArrayList<element> array=new ArrayList<element>();
 boolean runMethod;//true for manual turned on
 boolean start;//starts play method
+button current;
 
   void setup(){
    //set bkgrnd size
@@ -27,7 +28,7 @@ boolean start;//starts play method
    //and color
    background (225);
    //choose menuPFont font = createFont("arial",20);
-    PFont font = createFont("arial",20);
+   PFont font = createFont("arial",20);
 
     cp5 = new ControlP5(this);
     
@@ -43,17 +44,19 @@ boolean start;//starts play method
        .setPosition(140,20)
        .setSize(40,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-       ;
-       
-    textFont(font);
-    //create buttons
-    button manual=new button("manual",200,20); manual.draw();
+       ;    
+
     
     run();
     }
 
   void draw () {
-    
+    //create buttons
+    float[] buttonCoor = {width-60,40,35,20};
+    button manual = new button("Bubble",buttonCoor);
+    if (manual.hover() != null) {
+      current = manual.hover();
+    }
   }
   
   //find where to put the next box, like in an array
@@ -93,8 +96,8 @@ boolean start;//starts play method
     }
   }
 
-  void mouseClicked() {
-    
+  void mousePressed() {
+      println(current.getName());
   }
 
   void play(){

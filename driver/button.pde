@@ -1,31 +1,63 @@
 class button{
   
-  float w=40;
-  float h=20;
-  float[] coors= new float[2];
-  boolean pressed=false;
+  float[] coors = new float[4];
   String name;
   
-  button(String n, float x,float y){
-    name=n;
-    coors[0]=x;
-    coors[1]=y;
+  button(String words, float[] inputCoors) {
+     //finding space
+      for (int x=0;x<coors.length;x++){
+        coors[x]=inputCoors[x];
+      }
+      
+      name = words;
+      hover();
+      
+       //creating a rect
+       rectMode(RADIUS);  
+       //draw border  
+       //create rectangle
+       rect(coors[0],coors[1],coors[2],coors[3]); 
+       //fill w. words
+       fillText(name);
   }
   
   void draw(){
-    rect(coors[0],coors[1],w,h);
-    //fil bakgrnd
-    fill(255);
-    fillText(name);
-    noLoop();
+
+  }
+  
+  String getName() {
+    return name;
   }
   
   void fillText(String words){
     //center words
+    textFont(createFont("arial", 15));
     textAlign(CENTER,CENTER);
     rectMode(RADIUS);
     //fill to see the words
-    fill(25);
+    fill(255);
     text(words,coors[0],coors[1],coors[2],coors[3]);
   }
+  
+  button hover() {
+    float x,y,w,h;
+    
+    x = coors[0];
+    y = coors[1];
+    w = coors[2];
+    h = coors[3];
+    
+    stroke(204,102,0);
+    
+    if (mouseX>= x-w && mouseX <= x+w &&
+        mouseY>= y-h && mouseY <= y+h) {
+          fill(31,34,0);
+          return this;
+        }
+    else {
+      fill(31,34,255);
+      return null;
+    }
+  }
+ 
 }
