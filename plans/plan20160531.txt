@@ -20,7 +20,7 @@ SORTS:
 4. Merge
 5. Quick
 6. Heap (?)
-7. BOGO!
+7. BOGO (!?)
 
 METHODS: 
 I. Sorty things
