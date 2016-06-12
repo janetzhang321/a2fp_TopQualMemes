@@ -83,13 +83,14 @@ void setup(){
        return;
      }
      else {
-       element e = new element(array.get(0).getName(),array.get(0).getCoors());
+       element e = new element(array.get(0).getName(),array.get(0).getCoors(),array.get(0).getElementType());
        for (int i = 1; i < array.size(); i++) {
          element pho = array.get(i);
-         element redraw = new element(pho.getName(),pho.getCoors());
+         element redraw = new element(pho.getName(),pho.getCoors(),pho.getElementType());
        }
      }
   }
+  
   
   public void notOnButton() {
     if (!bubbleSortButton() && 
@@ -181,12 +182,12 @@ void setup(){
   public void addE(int i){
     if (array.size()==0){
         float[] b={50,250,25,25};
-        element e=new element(new Integer(i).toString(), b); 
+        element e=new element(new Integer(i).toString(), b,""); 
         array.add(e);
     }
     
     else{
-      element e=new element(new Integer(i).toString(), findCoor(25)); 
+      element e=new element(new Integer(i).toString(), findCoor(25),""); 
       array.add(e);
     }
   }
@@ -218,17 +219,17 @@ void setup(){
     }
     
     if (n == 0) {
-       element e=new element(temp.get(0), start); 
+       element e=new element(temp.get(0), start,""); 
        array.add(e);
        
        for (int i = 1; i < temp.size(); i++) {
-        e = new element(temp.get(i), findCoor(25));
+        e = new element(temp.get(i), findCoor(25),"");
         array.add(e);  
        }
     }
     else {
       for (int i = 0; i < temp.size(); i++) {
-        element e = new element(temp.get(i), findCoor(25));
+        element e = new element(temp.get(i), findCoor(25),"");
         array.add(e);  
       }
     }
@@ -299,9 +300,4 @@ void setup(){
         currSort = null;
       }
     }
-  }
-  /*
-  public mousePressed(){
-    
-  }
-*/
+  } 

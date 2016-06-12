@@ -46,7 +46,7 @@ public class button{
     y = coors[1];
     w = coors[2];
     h = coors[3];
-    
+    strokeWeight(1);
     stroke(204,102,0);
     
     if (mouseX>= x-w && mouseX <= x+w &&

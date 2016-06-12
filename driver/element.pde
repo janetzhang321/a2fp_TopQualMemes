@@ -20,7 +20,18 @@ public class element {
     //fil bakgrnd
     fill(255);    
     //draw border
-    stroke(204,102,0);
+    strokeWeight(4);
+    stroke(37,255,0);
+    if (elementType=="selected"){
+      stroke(232,44,12);
+    }
+    else if (elementType=="interested"){
+      stroke(255,224,0);
+    }
+    else if (elementType=="sorted"){
+      stroke(3,51,255);
+    }
+    //strokeWeight(1);
     //create rectangle
     rect(coors[0],coors[1],coors[2],coors[3]); 
     //fill w. words
@@ -34,6 +45,10 @@ public class element {
   }
   
   //accessors
+  public String getElementType() {
+    return elementType;
+  }
+  
   public float[] getCoors(){
     float[] a = {coors[0],coors[1],coors[2],coors[3]};
     return a;
@@ -41,6 +56,10 @@ public class element {
   
   public String getName() {
     return name;
+  }
+  
+  public void setElementType(String s) {
+    elementType = s;
   }
   
   public void setCoors(float[] b) {
@@ -60,12 +79,5 @@ public class element {
     fill(25);
     text(words,coors[0],coors[1],coors[2],coors[3]);
   }
-  /*
-  public void swap(element swapper) {
-    float[] swapperCoors = swapper.getCoors();
-    swapper.setCoors(this.getCoors());
-    this.setCoors(swapperCoors);
-  }
-  */
 
 }
