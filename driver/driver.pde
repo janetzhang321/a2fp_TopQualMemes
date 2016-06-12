@@ -89,7 +89,7 @@ void setup(){
        }
      }
   }
-  /*
+  
    public void swap(int i1, int i2) {
      element one = array.get(i1);
      element two = array.get(i2);
@@ -100,7 +100,7 @@ void setup(){
      array.set(i1, two);
      array.set(i2, one);
    }
-    */
+    
   public void bubbleSort(){
     //This writes the coordinates of the button (x coor, y coor, width, height)
     float[] buttonCoor = {width-60,30,25,10};
@@ -218,11 +218,35 @@ void setup(){
     
     array.remove(n);
     
-    for (int i = 0; i < temp.size(); i++) {
-      element e = new element(temp.get(i), findCoor(25));
-      array.add(e);  
+    float[] start={50,250,25,25};
+    
+    if (temp.size() == 0) {    
+      //creating a rect
+      rectMode(RADIUS);
+      //fil bakgrnd
+      fill(225);
+      stroke(225);
+      //create rectangle
+      rect(start[0],start[1],start[2],start[3]);
     }
     
+    if (n == 0) {
+       element e=new element(new Integer(i).toString(), b); 
+       array.add(e);
+       
+       for (int i = 1; i < temp.size(); i++) {
+        element e = new element(temp.get(i), findCoor(25));
+        array.add(e);  
+       }
+    }
+    else {
+      for (int i = 0; i < temp.size(); i++) {
+        element e = new element(temp.get(i), findCoor(25));
+        array.add(e);  
+      }
+    }
+    
+    if (n > 0) {
     //This deletes the remnant box that Processing drew
     float[] nextBox = findCoor(25);
     
@@ -233,6 +257,7 @@ void setup(){
     stroke(225);
     //create rectangle
     rect(nextBox[0],nextBox[1],nextBox[2],nextBox[3]);
+    }
   }
     
   /*

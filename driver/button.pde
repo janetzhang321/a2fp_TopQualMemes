@@ -80,7 +80,7 @@ public class button{
   void bubbleSort(){
     //just random test code
     background(0);   // Clear the screen with a black background
-    ArrayList<Comparable> data = new ArrayList<Comparable>();
+    ArrayList data = new ArrayList();
     boolean fullPass = false;
     for (int i=0; i < array.size();i++){
       data.add(array.get(i));
@@ -88,7 +88,7 @@ public class button{
     while (! fullPass) {
         fullPass = true;
         for(int i = array.size() - 1; i > 0; i--) {
-          if (array.get(i)<array.get(i - 1)) {
+          if (Integer.parseInt(array.get(i).getName())<Integer.parseInt(array.get(i-1).getName())) {
               swap(i,i-1);
               fullPass = false;
           }
