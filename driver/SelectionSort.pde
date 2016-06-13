@@ -19,10 +19,11 @@ public class SelectionSort extends Sort{
         }
         comp++;
       }
-      else {
-        swap(min,curr);        
+      else {     
+        swap(min,curr);
         curr++;
-        comp = curr+1;   
+        comp = curr+1;
+        min = curr;
       }
     }
     else {
