@@ -22,3 +22,12 @@ IN CLASS (NALA): look through textfield code, understand how to glean informatio
 IN CLASS (RICHARD and JANET): designed superclass structure with animate so that each Sort class will inherit certain methods
 IN CLASS: planned for weekend work, discussed each other's schedules
 AT HOME (NALA): tried to implement textfield properly, but unsuccessful
+
+06.11.16
+AT HOME (RICHARD):Developed button
+AT HOME (JANET): Created buttons
+AT HOME (NALA): created instance variables and implemented the textfield
+
+06.12.16
+(RICHARD and JANET and NALA): 
+Created selection sort,insertion sort, and bubble sort, the buttons, a super class of sorts, and handled changing colors
