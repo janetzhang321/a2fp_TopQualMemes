@@ -11,23 +11,25 @@ public class BubbleSort extends Sort{
   
   
   public ArrayList<element> sortArr() {
-    normalize()
+    normalize();
     if(curr < data.size()) {
-      data.get(curr).setElementType("red");
-        if (comp < data.size() - curr) {
+        if (comp < data.size() - curr) {          
           data.get(comp).setElementType("yellow");
+          data.get(comp-1).setElementType("red");
           if (Integer.parseInt(data.get(comp).getName())<Integer.parseInt(data.get(comp-1).getName())) {
              swap(comp,comp-1);
-          }
+          }        
           comp++;
         }
         if (comp == data.size() - curr) {
-          curr++;
+          curr++;          
+          data.get(data.size()-curr).setElementType("purple");
           comp = 1;
         }
     }
     
     else {
+      finalize();
       done = true;
     }
     

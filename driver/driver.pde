@@ -19,6 +19,7 @@ private boolean runMethod;//true for  turned on
 private boolean start;//starts play method
 private String current=null;
 private Sort currSort;
+private int speed;
 
 
 
@@ -27,11 +28,11 @@ void setup(){
    size(700, 400);
    //fullScreen();
    //and color
-   background (225);
+   background (65,65,65);
    //choose menuPFont font = createFont("arial",20);
    //drawInput();
-       PFont font = createFont("arial",20);
-
+    PFont font = createFont("arial",20);
+    
     cp5 = new ControlP5(this);
     
     cp5.addTextfield("input")
@@ -39,7 +40,7 @@ void setup(){
        .setSize(100,20)
        .setFont(font)
        .setFocus(true)
-       .setColor(color(255,0,0))
+       .setColor(color(145,145,0))
        ;
          
     cp5.addBang("insert")
@@ -53,7 +54,7 @@ void setup(){
        .setSize(100,20)
        .setFont(font)
        .setFocus(false)
-       .setColor(color(255,0,0))
+       .setColor(color(145,145,0))
        ;
          
     cp5.addBang("delete")
@@ -62,7 +63,12 @@ void setup(){
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;    
     
-    //run();
+    cp5.addSlider("speed")
+     .setRange(100,3000)
+     .setValue(1000)
+     .setPosition(width-200,100)
+     .setSize(100,10)
+     ;
     }
 
   void draw () {
@@ -231,8 +237,8 @@ void setup(){
       rectMode(RADIUS);
       //fil bakgrnd
       strokeWeight(5);
-      fill(225);
-      stroke(225);
+      fill(65,65,65);
+      stroke(65,65,65);
       //create rectangle
       rect(start[0],start[1],start[2],start[3]);
       strokeWeight(1);
@@ -262,8 +268,8 @@ void setup(){
     rectMode(RADIUS);
     //fil bakgrnd
     strokeWeight(5);
-    fill(225);    
-    stroke(225);
+    fill(65,65,65);    
+    stroke(65,65,65);
     //create rectangle
     rect(nextBox[0],nextBox[1],nextBox[2],nextBox[3]);
     strokeWeight(1);
@@ -323,7 +329,7 @@ void setup(){
       for (int i = 0; i < temp.size(); i++) {
         array.set(i, temp.get(i));
       }
-      delay(500);
+      delay(speed);
       if (currSort.getDone()) {
         currSort = null;
       }

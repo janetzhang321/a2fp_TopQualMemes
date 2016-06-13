@@ -18,6 +18,7 @@ public abstract class Sort{
    public void swap(int i1, int i2) {
      element one = data.get(i1);
      element two = data.get(i2);
+     one.setElementType("cyan");
      two.setElementType("cyan");
      float[] oneCoors = one.getCoors();
      float[] twoCoors = two.getCoors();
@@ -32,9 +33,16 @@ public abstract class Sort{
    public void normalize() {
      for (int i = 0; i < data.size(); i++) {
        element e = data.get(i);
-       if (e.getElementType() != "blue") {
+       if (e.getElementType() != "blue" && e.getElementType() != "purple") {
          e.setElementType("");
        }
+     }
+   }
+   
+   public void finalize() {
+     for (int i = 0; i < data.size(); i++) {
+       element e = data.get(i);
+         e.setElementType("blue");
      }
    }
 }

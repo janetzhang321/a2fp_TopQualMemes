@@ -38,6 +38,9 @@ public class element {
     else if (elementType=="cyan"){
       stroke(0,255,227);
     }
+    else if (elementType=="pink"){
+      stroke(255,115,178);
+    }
     //strokeWeight(1);
     //create rectangle
     rect(coors[0],coors[1],coors[2],coors[3]); 
@@ -80,6 +83,7 @@ public class element {
   //text
   public void fillText(String words){
     //center words
+    textSize(15);
     textAlign(CENTER,CENTER);
     rectMode(RADIUS);
     //fill to see the words
