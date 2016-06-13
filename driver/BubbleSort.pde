@@ -11,8 +11,11 @@ public class BubbleSort extends Sort{
   
   
   public ArrayList<element> sortArr() {
+    normalize()
     if(curr < data.size()) {
+      data.get(curr).setElementType("red");
         if (comp < data.size() - curr) {
+          data.get(comp).setElementType("yellow");
           if (Integer.parseInt(data.get(comp).getName())<Integer.parseInt(data.get(comp-1).getName())) {
              swap(comp,comp-1);
           }

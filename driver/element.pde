@@ -35,6 +35,9 @@ public class element {
     else if (elementType=="purple"){
       stroke(128,13,255);
     }
+    else if (elementType=="cyan"){
+      stroke(0,255,227);
+    }
     //strokeWeight(1);
     //create rectangle
     rect(coors[0],coors[1],coors[2],coors[3]); 
