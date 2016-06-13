@@ -299,7 +299,7 @@ void setup(){
           currSort = new BubbleSort(array);
       }
       else if (current=="selection"){
-          currSort = new InsertionSort(array);
+          currSort = new SelectionSort(array);
       }
       else if (current=="insertion"){
           currSort = new InsertionSort(array);

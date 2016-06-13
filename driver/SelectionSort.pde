@@ -2,26 +2,31 @@ public class SelectionSort extends Sort{
   
   int curr;
   int comp;
+  int min;
   
   public SelectionSort(ArrayList<element> array){
     super(array);
     curr = 0;
     comp = curr+1; 
+    min = curr;
   }
   
   public ArrayList<element> sortArr() {
     if (curr<data.size()-1){
-      int iMin=curr;
       if(comp<data.size()){
-        if (Integer.parseInt(data.get(comp).getName())<Integer.parseInt(data.get(iMin).getName())){
-          iMin=comp;
+        if (Integer.parseInt(data.get(comp).getName())<Integer.parseInt(data.get(min).getName())){
+          min=comp;
         }
         comp++;
-      } 
-      if (iMin != curr) {
-        swap(iMin,comp); 
       }
-      curr++;
+      else {
+        swap(min,curr);        
+        curr++;
+        comp = curr+1;   
+      }
+    }
+    else {
+      done = true;
     }
     return data;
   }
