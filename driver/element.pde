@@ -1,11 +1,13 @@
 public class element {
   
-  private float[] coors = new float[4];
+  private float[] coors;
   private String elementType;
   private String name;
   
   //constructor
   public element(String words, float[] inputCoors, String inputType){
+    coors = new float[4];
+    
     //finding space
     for (int x=0;x<coors.length;x++){
       coors[x]=inputCoors[x];
@@ -47,12 +49,7 @@ public class element {
     //fill w. words
     fillText(name);
   }
-  
-  //idk
-  void draw() {
 
-    
-  }
   
   //accessors
   public String getElementType() {
@@ -68,6 +65,7 @@ public class element {
     return name;
   }
   
+  //mutators
   public void setElementType(String s) {
     elementType = s;
   }

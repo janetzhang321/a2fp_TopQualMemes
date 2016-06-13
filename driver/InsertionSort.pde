@@ -1,14 +1,13 @@
 public class InsertionSort extends Sort{
-  
-  int curr;
-  int comp;
-  
+
+  //Constructor
   public InsertionSort(ArrayList<element> array){
     super(array);
     curr = 1;
     comp = curr; 
   }
   
+  //Each time this method is run, insertion sort advances one step
   public ArrayList<element> sortArr() {
     normalize();
     if (curr<data.size()){

@@ -1,15 +1,13 @@
 public class BubbleSort extends Sort{
   
-  int curr;
-  int comp;
-  
+  //Constructor
   public BubbleSort(ArrayList<element> array) {
     super(array);
     curr = 0;
     comp = 1; 
   }
   
-  
+  //Each time this method is run, bubble sort advances one step
   public ArrayList<element> sortArr() {
     normalize();
     if(curr < data.size()) {

@@ -9,46 +9,46 @@
 * www.sojamo.de/libraries/controlp5
 *
 */
+
 import controlP5.*;
 
 ControlP5 cp5;
 
-private String textValue = "";
-private ArrayList<element> array=new ArrayList<element>();
-private boolean runMethod;//true for  turned on
-private boolean start;//starts play method
-private String current=null;
-private Sort currSort;
-private int speed;
+private ArrayList<element> array=new ArrayList<element>(); //Stores the Array
+private boolean running = false; //Boolean for whether a sort is running
+private String current=null; //The current button that the mouse is hovered over
+private Sort currSort; //The current sort that is being run
+private int speed; //The speed at which the sort is run
 
 
 
-void setup(){
+  void setup(){
    //set bkgrnd size
-   size(700, 400);
-   //fullScreen();
+   size(800, 400);
    //and color
    background (65,65,65);
-   //choose menuPFont font = createFont("arial",20);
-   //drawInput();
-    PFont font = createFont("arial",20);
+   //draw inputs and sliders useing ControlP5;
+   PFont font = createFont("arial",20);
     
-    cp5 = new ControlP5(this);
-    
-    cp5.addTextfield("input")
+   cp5 = new ControlP5(this);
+   
+    //Adds an input text field
+   cp5.addTextfield("input")
        .setPosition(20,20)
        .setSize(100,20)
        .setFont(font)
        .setFocus(true)
        .setColor(color(145,145,0))
        ;
-         
-    cp5.addBang("insert")
+   
+   //Button for that input
+   cp5.addBang("insert")
        .setPosition(140,20)
        .setSize(40,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ; 
    
+   //Adds an input text field for index of deletion
    cp5.addTextfield("index")
        .setPosition(20,70)
        .setSize(100,20)
@@ -56,22 +56,26 @@ void setup(){
        .setFocus(false)
        .setColor(color(145,145,0))
        ;
-         
+    
+    //Button to delete 
     cp5.addBang("delete")
        .setPosition(140,70)
        .setSize(40,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;    
     
+    //Slider for speed
     cp5.addSlider("speed")
-     .setRange(100,3000)
-     .setValue(1000)
+     .setRange(0,100)
+     .setValue(50)
      .setPosition(width-200,100)
      .setSize(100,10)
      ;
     }
 
   void draw () {
+    //clear all extraenous stuff
+    background (65,65,65);
     //create buttons 
     bubbleSortButton();
     selectionSortButton();
@@ -79,24 +83,44 @@ void setup(){
     clearButton();
     scrambleButton();
     notOnButton();
-    sortySelect();
+    //Select the sort
+    buttonSelect();
+    //Actually sort
     sorty(); 
+    //Write name of sort algo
+    title();
+    //Draw the actual array
     drawArray(); 
   }
   
   public void drawArray() {
+    //If empty
      if (array.size() == 0) {
        return;
      }
+     //Not empty
      else {
-       element e = new element(array.get(0).getName(),array.get(0).getCoors(),array.get(0).getElementType());
+       //Remember the value of the original array
+       element old = array.get(0);
+       //This redraws the array by remaking all those elements
+       element redraw = new element(old.getName(),old.getCoors(),old.getElementType());
+       //This part writes out the index
+       fill(255);
+       float[] textCoors = old.getCoors();
+       text("0",textCoors[0],textCoors[1]+40);
+       
+       //The previous part was for index 0. All other indices are covered by this for loop.
        for (int i = 1; i < array.size(); i++) {
          element pho = array.get(i);
-         element redraw = new element(pho.getName(),pho.getCoors(),pho.getElementType());
+         redraw = new element(pho.getName(),pho.getCoors(),pho.getElementType());
+         fill(255);
+         textCoors = pho.getCoors();
+         text(""+i,textCoors[0],textCoors[1]+40);
        }
      }
   }
   
+  //BUTTONS GALORE!!
   
   public void notOnButton() {
     if (!bubbleSortButton() && 
@@ -194,15 +218,15 @@ void setup(){
     }
   }
   
-  //find where to put the next box, like in an array
+  //find where to put the next box in an array
   public float[] findCoor(float size){
-    //default
     float[] newCoor = array.get(array.size()-1).getCoors();
     newCoor[0] += size*2;
     newCoor[1] += size*0;
     return newCoor;
   }
   
+  //Adds the next part of the array
   public void addE(int i){
     if (array.size()==0){
         float[] b={50,250,25,25};
@@ -216,6 +240,7 @@ void setup(){
     }
   }
 
+  //Deletes at a certain index
   public void deleteE(int n) {
     
     if (n > array.size()) {
@@ -232,16 +257,8 @@ void setup(){
     
     float[] start={50,250,25,25};
     
-    if (temp.size() == 0) {    
-      //creating a rect
-      rectMode(RADIUS);
-      //fil bakgrnd
-      strokeWeight(5);
-      fill(65,65,65);
-      stroke(65,65,65);
-      //create rectangle
-      rect(start[0],start[1],start[2],start[3]);
-      strokeWeight(1);
+    if (temp.size() == 0) {
+      return;
     }
     
     else if (n == 0) {
@@ -259,23 +276,9 @@ void setup(){
         array.add(e);  
       }
     }
-    
-    if (array.size() != 0) {
-    //This deletes the remnant box that Processing drew
-    float[] nextBox = findCoor(25);
-    
-    //creating a rect
-    rectMode(RADIUS);
-    //fil bakgrnd
-    strokeWeight(5);
-    fill(65,65,65);    
-    stroke(65,65,65);
-    //create rectangle
-    rect(nextBox[0],nextBox[1],nextBox[2],nextBox[3]);
-    strokeWeight(1);
-    }
   }
   
+  //This is the code for the insert button
   public void insert() {
     try {
       String theText = cp5.get(Textfield.class,"input").getText();
@@ -283,10 +286,11 @@ void setup(){
       cp5.get(Textfield.class,"input").setText("");
     } catch (Exception e) {
       cp5.get(Textfield.class,"input").setText("");
-      println("input was not numerical");
+      println("input invalid");
     }
   }
   
+  //This is the code for the delete button
   public void delete() {
     try {
       String theText = cp5.get(Textfield.class,"index").getText();
@@ -294,14 +298,39 @@ void setup(){
       cp5.get(Textfield.class,"index").setText("");
     } catch (Exception e) {
       cp5.get(Textfield.class,"index").setText("");
-      println("input was not numerical");
+      println("input invalid");
     }
   }
   
-  public void sortySelect() {
+  //Same code as insert(), but for when you click enter
+  public void input(String theText) {
+    try {
+      theText = cp5.get(Textfield.class,"input").getText();
+      addE(Integer.parseInt(theText));
+      cp5.get(Textfield.class,"input").setText("");
+    } catch (Exception e) {
+      cp5.get(Textfield.class,"input").setText("");
+      println("input invalid");
+    }
+  }
+  
+  //Same code as delete(), but for when you click enter
+  public void index(String theText) {
+    try {
+      theText = cp5.get(Textfield.class,"index").getText();
+      deleteE(Integer.parseInt(theText));
+      cp5.get(Textfield.class,"index").setText("");
+    } catch (Exception e) {
+      cp5.get(Textfield.class,"index").setText("");
+      println("input invalid");
+    }
+  }
+  
+  //This selects which sort to undergo. It also deals with clearing and scrambling. 
+  public void buttonSelect() {
     if (mousePressed) {
+      //The sorts work by creating a new object of the sort type
       if (current=="bubble"){
-          println("test");
           currSort = new BubbleSort(array);
       }
       else if (current=="selection"){
@@ -310,6 +339,8 @@ void setup(){
       else if (current=="insertion"){
           currSort = new InsertionSort(array);
       }
+      
+      //Check the respective methods
       else if (current=="clear"){
           clearVal();
       }
@@ -319,28 +350,60 @@ void setup(){
     }
   }
   
+  //This actually calls the sort
   public void sorty() {
     if (currSort == null) {
       return;
     }
     else {
-      
-      ArrayList<element> temp = currSort.sortArr();
+      running = true; //Set running to true
+      ArrayList<element> temp = currSort.sortArr(); //Have a temp array that gets the value of the sort
+      //Move the values from the temp array to the actual array
       for (int i = 0; i < temp.size(); i++) {
         array.set(i, temp.get(i));
       }
-      delay(speed);
+      
+      //delay
+      int slow = (int) (((100.0-speed)/100.0) * 2000);
+      delay(slow);
+      
+      //finished?
       if (currSort.getDone()) {
+        running = false;
         currSort = null;
       }
     }
   }
   
+  //This writes out the title
+  public void title() {
+    if (running) {
+      if (currSort instanceof BubbleSort) {
+        textSize(30);
+        fill(255);
+        text("Bubble", width - 100, height - 50);
+      }
+      else if (currSort instanceof SelectionSort) {
+        textSize(30);
+        fill(255);
+        text("Selection", width - 100, height - 50);
+      }
+      else if (currSort instanceof InsertionSort) {
+        textSize(30);
+        fill(255);
+        text("Insertion", width - 100, height - 50);
+      }
+    }
+  }
+  
+  //This clears the array
   public void clearVal() {
       while (array.size() > 0) {            
             deleteE(0);
           }
   }
+  
+  //This scrambles the array
   public void scramble() {
     ArrayList<String> temp = new ArrayList<String>();
     for (int i = 0; i < array.size(); i++) {
@@ -361,11 +424,4 @@ void setup(){
     }
   }
   
-  public void input(String theText) {
-    addE(Integer.parseInt(theText));
-  }
-  
-  public void index(String theText) {
-    deleteE(Integer.parseInt(theText)); 
-  }
   

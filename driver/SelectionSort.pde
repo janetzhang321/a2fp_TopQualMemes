@@ -1,9 +1,8 @@
 public class SelectionSort extends Sort{
+
+  int min; //The current min
   
-  int curr;
-  int comp;
-  int min;
-  
+  //Constructor
   public SelectionSort(ArrayList<element> array){
     super(array);
     curr = 0;
@@ -11,6 +10,7 @@ public class SelectionSort extends Sort{
     min = curr;
   }
   
+  //Each time this method is run, selection sort advances one step
   public ArrayList<element> sortArr() {
     normalize();
     if (curr<data.size()-1){

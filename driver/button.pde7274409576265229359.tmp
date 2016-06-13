@@ -4,7 +4,7 @@ public class button{
   private String name;
   
   public button(String words, float[] inputCoors) {
-      coors = new float[4];
+      coors = new float[4]
       
      //finding space
       for (int x=0;x<coors.length;x++){
@@ -22,13 +22,11 @@ public class button{
        //fill w. words
        fillText(name);
   }
-  
-  //accessor
+
   public String getName() {
     return name;
   }
   
-  //text
   public void fillText(String words){
     //center words
     textFont(createFont("arial", 10));
@@ -60,6 +58,14 @@ public class button{
       fill(31,34,255);
       return false;
     }
+  }
+  
+  void selectionSort(){
+    background(255, 204, 0);
+  }
+  
+  void insertionSort(){
+    background(232,100,25);
   }
  
 }
